@@ -25,21 +25,27 @@ if {$fromemailaddress_start != -1} {
 	set fromemailaddress $mailfrom
 }
 fileevent $mySock writable [list svcHandler $mySock]
-fconfigure $mySock -buffering none
-puts $mySock "helo <ENTER YOUR DATABASESERVER HERE>"
+fconfigure $mySock -buffering line
+puts $mySock "HELO <ENTER YOUR DATABASESERVER HERE>"
 gets $mySock name
-puts $mySock "mail from: $fromemailaddress"
+puts $mySock "MAIL FROM: $fromemailaddress"
 gets $mySock name
-puts $mySock "rcpt to: $toemailaddress"
+puts $mySock "RCPT TO: $toemailaddress"
 gets $mySock name
-puts $mySock "data"
+puts $mySock "DATA"
 gets $mySock name
-puts $mySock "To: $mailto"
 puts $mySock "From: $mailfrom"
+puts $mySock "To: $mailto"
 puts $mySock "Subject: $mailsubject"
+puts $mySock "MIME-Version: 1.0"
+puts $mySock "Content-type: text/plain; charset=UTF-8"
+puts $mySock "Content-Transfer-Encoding: 8bit"
 puts $mySock ""
 puts $mySock "$mailmessage"
+puts $mySock ""
 puts $mySock "."
+gets $mySock name
+puts $mySock "QUIT"
 gets $mySock name
 close $mySock
 return 1'
