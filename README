@@ -1,21 +1,32 @@
-pgMail v1.1 (05/01/2001)  
+pgMail v1.2 (01/07/2012)  
 pgMail is maintained by Branden R. Williams <brw@brandolabs.com> 
-and distributed under the GNU General Public License.  pgMail is 
-Copyright 2001 Branden R. Williams.
 
 Homepage: http://www.brandolabs.com/pgmail
 
 If you are interested in contributing to the project please email 
 the maintainer directly.
+------------------------------------------------------------------
+Copyright 2012 Branden R. Williams.
 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ------------------------------------------------------------------
 Welcome!  This README will be short and sweet so you can get to 
 coding!
 
 Essentially, pgMail is simply a stored function written in TCL
-which takes 4 arguments of type text (Who is it from, who is it 
+which takes 4 arguments of type 'text' (Who is it from, who is it 
 to, subject, and body of message), contacts the email server via 
-TCL sockets, and transmits your email.  
+TCL sockets, and transmits your email (Now UTF-8 Compatible!).  
 
 Before you can use pgMail, you must install the TCL/u procedural
 language.  TCL/u is an UNRESTRICTED version of TCL that the
@@ -47,11 +58,11 @@ qualified domain name for your mailserver.  i.e., mail.server.com.
 Replace the text <ENTER YOUR DATABASESERVER HERE> with the fully
 qualified domain name for your database server.  i.e., db.server.com.
 
-*** END OF NOTICE ***
+*** NOW ON TO LESS DRAMATIC TEXT! ***
 
 Once you have completed this step, use the psql interface to 
 add the pgMail function.  Just copy the contents of the 
-pgmail.sql file and paste them into your window.  You may also
+pgmail.sql file and paste it into your window.  You may also
 load it directly from the command line by typing 
 
 # psql -e [database] < pgmail.sql
@@ -70,7 +81,9 @@ Testing your install.
 
 There are some examples to try which have been included.  You 
 MUST FIRST replace the string <YOUREMAIL> in the 
-example.execute.sql script with your real email address.  
+example.execute.sql script with your real email address, and
+install the plpgsql language just like you did the pltclu above.
+You can do that by entering a "createlang [YOUR DATABASE] plpgsql".  
 
 Once that is complete, execute the example.setup.sql.  Then
 execute the example.execute.sql script.  You will see 2 emails 
