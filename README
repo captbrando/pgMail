@@ -1,9 +1,9 @@
 pgMail v1.1 (05/01/2001)  
-pgMail is maintained by Branden R. Williams <brw@brw.net> and
-distributed under the GNU General Public License.  pgMail is 
+pgMail is maintained by Branden R. Williams <brw@brandolabs.com> 
+and distributed under the GNU General Public License.  pgMail is 
 Copyright 2001 Branden R. Williams.
 
-Homepage: http://pgmail.sourceforge.net/
+Homepage: http://www.brandolabs.com/pgmail
 
 If you are interested in contributing to the project please email 
 the maintainer directly.
@@ -77,5 +77,5 @@ execute the example.execute.sql script.  You will see 2 emails
 in your mailbox.  To remove this example, execute the 
 example.cleanup.sql script.
 
-If you have any other questions, please visit our homepage at 
-http://pgmail.sourceforge.net/.  Thanks.
+If you have any other questions, please visit the homepage at 
+http://www.brandolabs.com/pgmail/.  Thanks.
