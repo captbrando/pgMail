@@ -15,7 +15,7 @@ BEGIN
 	if customerRec.paystatus = ''y'' then
 		textMessage := ''Thank you for paying your bill.  How sweet of you.
 			I love cake.  Dont you?'';
-		perform pgmail(''Order System<os@fart.com>'',customerRec.email,''You paid.  How nice.'', textMessage);
+		perform pgmail(''Order System<os@store.com>'',customerRec.email,''You paid.  How nice.'', textMessage);
 	end if;
 	return NEW;
 END;' language 'plpgsql';

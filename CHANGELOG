@@ -1,5 +1,11 @@
 Change Log.
 
+v1.2 - pgMail now properly sends UTF-8 encoded emails. Thanks to 
+       Balazs Keresztury for the patch! (me)
+     - Fixed an issue whereby some servers would reject emails due to
+       "Improper use of SMTP command pipelining." Now resolved. (me)
+     - Updated to use the Apache 2.0 license. (me)
+
 v1.1 - Added regular expression support to allow to/from fields to
        either contain the name and email, or simply the email address. (me)
      - Removed my mailserver from the stored proc.  you must enter your 
