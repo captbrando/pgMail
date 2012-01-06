@@ -1,0 +1,81 @@
+pgMail v1.1 (05/01/2001)  
+pgMail is maintained by Branden R. Williams <brw@brw.net> and
+distributed under the GNU General Public License.  pgMail is 
+Copyright 2001 Branden R. Williams.
+
+Homepage: http://pgmail.sourceforge.net/
+
+If you are interested in contributing to the project please email 
+the maintainer directly.
+
+------------------------------------------------------------------
+Welcome!  This README will be short and sweet so you can get to 
+coding!
+
+Essentially, pgMail is simply a stored function written in TCL
+which takes 4 arguments of type text (Who is it from, who is it 
+to, subject, and body of message), contacts the email server via 
+TCL sockets, and transmits your email.  
+
+Before you can use pgMail, you must install the TCL/u procedural
+language.  TCL/u is an UNRESTRICTED version of TCL that the
+database may use in its stored functions.  ** Take into account
+that you must prepare adequate security precautions when adding 
+the TCL/u language to your database! **  The author will not be
+responsible for misconfigured servers allowing dangerous users
+to do bad things.
+
+To install the TCL/u procedural language, you must have compiled
+and installed the TCL extensions of PostgreSQL (or in the binary
+versions, just make sure you install the TCL RPM).  Once you 
+are sure this has been completed, simply type the following at
+the unix shell prompt as a database administrator.
+
+# createlang pltclu <database>
+
+In the place of <database>, put the name of your database that 
+you will be adding the stored procedure to.  If you want it to
+also be added to all new databases, use "template1" as your 
+database name.
+
+*** BEFORE ADDING THE PROCEDURE TO YOUR DATABASE YOU MUST DO THE ***
+*** FOLLOWING!!!                                                 ***
+
+Replace the text <ENTER YOUR MAILSERVER HERE> with the fully
+qualified domain name for your mailserver.  i.e., mail.server.com.
+
+Replace the text <ENTER YOUR DATABASESERVER HERE> with the fully
+qualified domain name for your database server.  i.e., db.server.com.
+
+*** END OF NOTICE ***
+
+Once you have completed this step, use the psql interface to 
+add the pgMail function.  Just copy the contents of the 
+pgmail.sql file and paste them into your window.  You may also
+load it directly from the command line by typing 
+
+# psql -e [database] < pgmail.sql
+
+Once you have installed the stored function, simply call the 
+procedure as follows.
+
+select pgmail('Send From <from@from.com>','Send To <to@to.com>',
+ 'Subject goes here','Message body here.');
+
+In both the Send From and Send To fields, you may include either
+only the email, or the email enclosed in <> with a plaintext name.
+
+------------------------------------------------------------------
+Testing your install.
+
+There are some examples to try which have been included.  You 
+MUST FIRST replace the string <YOUREMAIL> in the 
+example.execute.sql script with your real email address.  
+
+Once that is complete, execute the example.setup.sql.  Then
+execute the example.execute.sql script.  You will see 2 emails 
+in your mailbox.  To remove this example, execute the 
+example.cleanup.sql script.
+
+If you have any other questions, please visit our homepage at 
+http://pgmail.sourceforge.net/.  Thanks.

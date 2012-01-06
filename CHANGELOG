@@ -1,0 +1,8 @@
+Change Log.
+
+v1.1 - Added regular expression support to allow to/from fields to
+       either contain the name and email, or simply the email address. (me)
+     - Removed my mailserver from the stored proc.  you must enter your 
+       own.  Sorry :)  (me)
+
+v1.0 - Initial Release.
