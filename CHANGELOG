@@ -1,5 +1,9 @@
 Change Log.
 
+v1.3 - pgMail will now add a properly formatted Date header. This was
+       particularly troubling for some Android users. Thanks to
+       Nicklas Aven for the patch! (me)
+
 v1.2 - pgMail now properly sends UTF-8 encoded emails. Thanks to 
        Balazs Keresztury for the patch! (me)
      - Fixed an issue whereby some servers would reject emails due to

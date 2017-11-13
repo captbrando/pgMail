@@ -1,4 +1,4 @@
-pgMail v1.2 (01/07/2012)  
+pgMail v1.3 (11/13/2017)  
 pgMail is maintained by Branden R. Williams <brw@brandolabs.com> 
 
 Homepage: http://www.brandolabs.com/pgmail
@@ -6,7 +6,7 @@ Homepage: http://www.brandolabs.com/pgmail
 If you are interested in contributing to the project please email 
 the maintainer directly.
 ------------------------------------------------------------------
-Copyright 2012 Branden R. Williams.
+Copyright 2002-2017 Branden R. Williams.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
