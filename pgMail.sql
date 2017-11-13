@@ -34,6 +34,7 @@ puts $mySock "RCPT TO: $toemailaddress"
 gets $mySock name
 puts $mySock "DATA"
 gets $mySock name
+puts $mySock "Date: [clock format [clock seconds] -format {%a, %d %b %Y %H:%M:%S +0000} -gmt true]"
 puts $mySock "From: $mailfrom"
 puts $mySock "To: $mailto"
 puts $mySock "Subject: $mailsubject"
