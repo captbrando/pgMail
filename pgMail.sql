@@ -1,4 +1,4 @@
-create function pgmail(text, text, text, text default '', text default '') returns int4 as '
+create function pgmail(text, text, text, text, text default '') returns int4 as '
 set mailfrom $1
 set mailto $2
 set mailsubject $3
