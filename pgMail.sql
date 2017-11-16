@@ -47,13 +47,15 @@ puts $mySock "Subject: $mailsubject"
 puts $mySock "MIME-Version: 1.0"
 if {$multipart} {
 	puts $mySock {Content-type: multipart/mixed; boundary="just_a_simple_boundary"}
-} elseif {$mailmessage ne ""} {
+}
+if {$mailmessage ne ""} {
 	if {$multipart} {puts $mySock "--just_a_simple_boundary"}
 	puts $mySock "Content-type: text/plain; charset=UTF-8"
 	puts $mySock "Content-Transfer-Encoding: 8bit"
 	puts $mySock ""
 	puts $mySock "$mailmessage"
-} elseif {$mailmessage_html ne ""} {
+}
+if {$mailmessage_html ne ""} {
 	if {$multipart} {puts $mySock "--just_a_simple_boundary"}
 	puts $mySock "Content-type: text/html; charset=UTF-8"
 	puts $mySock "Content-Transfer-Encoding: 8bit"
