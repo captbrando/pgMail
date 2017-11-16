@@ -1,8 +1,14 @@
-create function pgmail(text, text, text, text) returns int4 as '
+create function pgmail(text, text, text, text, text default '') returns int4 as '
 set mailfrom $1
 set mailto $2
 set mailsubject $3
 set mailmessage $4
+set mailmessage_html $5
+if {$mailmessage ne "" && $mailmessage_html ne ""} {
+	set multipart true
+} else {
+	set multipart false
+}
 set myHost "<ENTER YOUR MAILSERVER HERE>"
 set myPort 25
 set mySock [socket $myHost $myPort]
@@ -39,10 +45,24 @@ puts $mySock "From: $mailfrom"
 puts $mySock "To: $mailto"
 puts $mySock "Subject: $mailsubject"
 puts $mySock "MIME-Version: 1.0"
-puts $mySock "Content-type: text/plain; charset=UTF-8"
-puts $mySock "Content-Transfer-Encoding: 8bit"
-puts $mySock ""
-puts $mySock "$mailmessage"
+if {$multipart} {
+	puts $mySock {Content-type: multipart/mixed; boundary="just_a_simple_boundary"}
+}
+if {$mailmessage ne ""} {
+	if {$multipart} {puts $mySock "--just_a_simple_boundary"}
+	puts $mySock "Content-type: text/plain; charset=UTF-8"
+	puts $mySock "Content-Transfer-Encoding: 8bit"
+	puts $mySock ""
+	puts $mySock "$mailmessage"
+}
+if {$mailmessage_html ne ""} {
+	if {$multipart} {puts $mySock "--just_a_simple_boundary"}
+	puts $mySock "Content-type: text/html; charset=UTF-8"
+	puts $mySock "Content-Transfer-Encoding: 8bit"
+	puts $mySock ""
+	puts $mySock "$mailmessage_html"
+}
+if {$multipart} {puts $mySock "--just_a_simple_boundary--"}
 puts $mySock ""
 puts $mySock "."
 gets $mySock name
