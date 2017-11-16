@@ -1,4 +1,4 @@
-pgMail v1.3 (11/13/2017)  
+pgMail v1.4 (11/16/2017)  
 pgMail is maintained by Branden R. Williams <brw@brandolabs.com> 
 
 Homepage: http://www.brandolabs.com/pgmail
@@ -71,7 +71,15 @@ Once you have installed the stored function, simply call the
 procedure as follows.
 
 select pgmail('Send From <from@from.com>','Send To <to@to.com>',
- 'Subject goes here','Message body here.');
+ 'Subject goes here','Plaintext message body here.');
+
+select pgmail('Send From <from@from.com>','Send To <to@to.com>',
+ 'Subject goes here','','HTML message body here.');
+
+Or now, multipart MIME!
+
+select pgmail('Send From <from@from.com>','Send To <to@to.com>',
+ 'Subject goes here','Plaintext message body here.', 'HTML message body here.');
 
 In both the Send From and Send To fields, you may include either
 only the email, or the email enclosed in <> with a plaintext name.
