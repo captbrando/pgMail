@@ -1,4 +1,4 @@
-pgMail v1.4 (11/16/2017)  
+pgMail v1.5 (12/10/2024)  
 pgMail is maintained by Branden R. Williams <brw@brandolabs.com> 
 
 Homepage: http://www.brandolabs.com/pgmail
@@ -6,7 +6,7 @@ Homepage: http://www.brandolabs.com/pgmail
 If you are interested in contributing to the project please email 
 the maintainer directly.
 ------------------------------------------------------------------
-Copyright 2002-2017 Branden R. Williams.
+Copyright 2002-2025 Branden R. Williams.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ which takes 4 arguments of type 'text' (Who is it from, who is it
 to, subject, and body of message), contacts the email server via 
 TCL sockets, and transmits your email (Now UTF-8 Compatible!).  
 
-Before you can use pgMail, you must install the TCL/u procedural
+Before you can use pgMail, you must enable the TCL/u procedural
 language.  TCL/u is an UNRESTRICTED version of TCL that the
 database may use in its stored functions.  ** Take into account
 that you must prepare adequate security precautions when adding 
@@ -38,13 +38,13 @@ to do bad things.
 
 To install the TCL/u procedural language, you must have compiled
 and installed the TCL extensions of PostgreSQL (or in the binary
-versions, just make sure you install the TCL RPM).  Once you 
+versions, just make sure you install the pltcl packages).  Once you 
 are sure this has been completed, simply type the following at
 the unix shell prompt as a database administrator.
 
-# createlang pltclu <database>
+# psql -c 'CREATE EXTENSION pltclu' <DATABASE>
 
-In the place of <database>, put the name of your database that 
+In the place of <DATABASE>, put the name of your database that 
 you will be adding the stored procedure to.  If you want it to
 also be added to all new databases, use "template1" as your 
 database name.
@@ -84,14 +84,14 @@ select pgmail('Send From <from@from.com>','Send To <to@to.com>',
 In both the Send From and Send To fields, you may include either
 only the email, or the email enclosed in <> with a plaintext name.
 
+The code in this repository is certified against PostgreSQL 15+.
+
 ------------------------------------------------------------------
 Testing your install.
 
 There are some examples to try which have been included.  You 
 MUST FIRST replace the string <YOUREMAIL> in the 
-example.execute.sql script with your real email address, and
-install the plpgsql language just like you did the pltclu above.
-You can do that by entering a "createlang [YOUR DATABASE] plpgsql".  
+example.execute.sql script with your real email address.
 
 Once that is complete, execute the example.setup.sql.  Then
 execute the example.execute.sql script.  You will see 2 emails 
