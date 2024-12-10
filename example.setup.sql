@@ -6,7 +6,7 @@ create table orders (
 	paystatus varchar(1) default 'n'
 );
 
-create function checkordermail() returns opaque as '
+create function checkordermail() returns trigger as '
 DECLARE
 	customerRec RECORD;
 	textMessage text;
