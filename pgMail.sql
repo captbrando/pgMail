@@ -31,7 +31,7 @@ if {$fromemailaddress_start != -1} {
 	set fromemailaddress $mailfrom
 }
 fileevent $mySock writable [list svcHandler $mySock]
-fconfigure $mySock -buffering line
+fconfigure $mySock -buffering line -encoding utf-8
 puts $mySock "HELO <ENTER YOUR DATABASESERVER HERE>"
 gets $mySock name
 puts $mySock "MAIL FROM: $fromemailaddress"
