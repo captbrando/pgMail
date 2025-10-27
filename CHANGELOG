@@ -1,5 +1,12 @@
 Change Log.
 
+v1.5 - pgMail has been updated to support the utf-8 character set
+       inside pltclu. (thanks Glukhov Sergey)
+     - Updated README to reflect modern PostgreSQL implementations
+       as some commands and suggestions were actually deprecated. (me)
+     - Updated the example scripts to use modern trigger return
+       vs opaque data type. (me)
+
 v1.4 - pgMail now supports both HTML messaging and MULTIPART MIME
        messaging. It's backwards compatible. If you want to ONLY send
        HTML, you need to pass an empty string as your 4th argument.
